@@ -1,10 +1,13 @@
-<div class="jumbotron text-center">
-  {{#if user}}
-    Welcome {{user.local.email}}
-  {{else}}
-    <p>Login or Register</p>
+<% include header %>
 
+<div class="jumbotron text-center">
+  <% if (user) { %>
+    Welcome <%= user.local.email %>
+  <% } else { %>
+    <p>Login or Register</p>
     <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
     <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
-  {{/if}}
+  <% } %>
 </div>
+
+<% include footer %>
