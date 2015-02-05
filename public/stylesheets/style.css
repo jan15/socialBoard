@@ -2,6 +2,10 @@ a {
   color: #00B7FF;
 }
 
+a:focus, a:hover {
+  text-decoration: none;
+}
+
 .tweeter {
   border: solid thin #bbb;
   margin: 0.5em;
