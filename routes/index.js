@@ -20,8 +20,10 @@ router.get('/tweeter/:screen_name', function(req, res, next) {
     var totals = { retweets: 0, favorites: 0 };
     if (!error) {
       tweets.forEach(function(tweet) {
-        totals.retweets += tweet.retweet_count;
-        totals.favorites += tweet.favorite_count;
+        if (((new Date()) - (new Date(tweet.created_at)))/1000/60/60 <= 24) {
+          totals.retweets += tweet.retweet_count;
+          totals.favorites += tweet.favorite_count;
+        }
       });
       res.json(totals);
     }
