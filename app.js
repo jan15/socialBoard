@@ -36,6 +36,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 var passportRoutes = require('./app/routes.js');
 passportRoutes(app, passport);
+app.use(routes);
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
