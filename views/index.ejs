@@ -1,11 +1,10 @@
 <% include header %>
 
 <div ng-app="socialBoard" ng-controller="MainController">
-
   <div><input type="text" ng-model="q" class="form-control" placeholder="Search..."/></div>
   <div class="media tweeter" ng-repeat="tweeter in tweeters | orderBy: '-weight' | filter:q">
     <div class="media-left">
-        <img class="media-object" src="{{ tweeter.image }}" alt="...">
+      <img class="media-object" src="{{ tweeter.image }}" alt="...">
     </div>
     <div class="media-body">
       <h4 class="media-heading">@{{tweeter.screen_name}}</h4>
@@ -19,11 +18,6 @@
         <span class="badge success"><i class="fa fa-sort-amount-desc"></i> {{tweeter.weight}}</span>
       </div>
     </div>
-  </div>
-
-
-
-  <div >
   </div>
 </div>
 

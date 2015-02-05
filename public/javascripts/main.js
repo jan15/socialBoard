@@ -1,4 +1,4 @@
-var team = ["niolmccartney", "TLawesomeness", "Spinaldash", "EmileMuny", "tommyjanszen", "soyzamudio", "GrYoT", "cadenichols"];
+var team = ["TK_codebear", "niolmccartney", "TLawesomeness", "Spinaldash", "EmileMuny", "tommyjanszen", "soyzamudio", "GrYoT", "cadenichols"];
 
 var app = angular.module("socialBoard", [])
 
@@ -7,9 +7,10 @@ app.controller("MainController", ['$http', '$scope', function($http, $scope) {
 
   $scope.tweeters.forEach(function(tweeter) {
     $http.get("/tweeter/" + tweeter.screen_name).success(function(data) {
+      tweeter.tweets = data.tweets;
       tweeter.retweets = data.retweets;
       tweeter.favorites = data.favorites;
-      tweeter.sum = data.favorites + data.retweets;
+      tweeter.weight = data.favorites + (1.5 * data.retweets);
       tweeter.loading = false;
     });
   });
