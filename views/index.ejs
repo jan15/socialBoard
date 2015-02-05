@@ -1,9 +1,18 @@
 <% include header %>
 
 <div ng-app="socialBoard" ng-controller="MainController">
-  {{ready}}
-  <div ng-repeat="tweeter in tweeters">
-    {{tweeter.username}}
+  <div class="tweeter" ng-repeat="tweeter in tweeters">
+    <div class="screen-name">
+      {{tweeter.screen_name}}
+    </div>
+    <div ng-show="tweeter.loading">
+      <i class="fa fa-spin fa-spinner"></i>
+    </div>
+    <div ng-hide="tweeter.loading">
+      <span class="badge">{{tweeter.retweets}}</span>
+      <span class="badge">{{tweeter.favorites}}</span>
+      <span class="badge">{{tweeter.sum}}</span>
+    </div>
   </div>
 </div>
 

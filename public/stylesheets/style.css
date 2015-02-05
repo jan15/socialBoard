@@ -6,3 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+
+.tweeter {
+  border: solid thin #bbb;
+  padding: 1em;
+  margin: 1em;
+  float: left;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px #aaa;
+}
+
+.screen-name {
+  margin-bottom: 1em;
+}
