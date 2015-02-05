@@ -1,13 +1,10 @@
 <% include header %>
 
-<div class="jumbotron text-center">
-  <% if (user) { %>
-    Welcome <%= user.local.email %>
-  <% } else { %>
-    <p>Login or Register</p>
-    <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-    <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
-  <% } %>
+<div ng-app="socialBoard" ng-controller="MainController">
+  {{ready}}
+  <div ng-repeat="tweeter in tweeters">
+    {{tweeter.username}}
+  </div>
 </div>
 
 <% include footer %>
