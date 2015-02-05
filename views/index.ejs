@@ -4,7 +4,9 @@
   <div><input type="text" ng-model="q" class="form-control" placeholder="Search..."/></div>
   <div class="media tweeter" ng-repeat="tweeter in tweeters | orderBy: '-weight' | filter:q">
     <div class="media-left">
-      <img class="media-object" src="{{ tweeter.image }}" alt="...">
+      <a href="#">
+        <img class="media-object" src="{{ tweeter.url }}" alt="{{tweeter.screen_name}}" />
+      </a>
     </div>
     <div class="media-body">
       <a href="http://twitter.com/{{tweeter.screen_name}}"><h4 class="media-heading">@{{tweeter.screen_name}}</h4></a>

@@ -4,11 +4,15 @@ a {
 
 .tweeter {
   border: solid thin #bbb;
-  padding: 1em;
-  margin: 1em;
+  margin: 0.5em;
+  width: 365px
   float: left;
   border-radius: 10px;
   box-shadow: 1px 1px 5px #aaa;
+}
+
+.media-body {
+  padding: 10px;
 }
 
 .screen-name {

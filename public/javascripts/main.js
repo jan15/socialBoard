@@ -7,6 +7,7 @@ app.controller("MainController", ['$http', '$scope', function($http, $scope) {
 
   $scope.tweeters.forEach(function(tweeter) {
     $http.get("/tweeter/" + tweeter.screen_name).success(function(data) {
+      tweeter.url = data.url;
       tweeter.tweets = data.tweets;
       tweeter.retweets = data.retweets;
       tweeter.favorites = data.favorites;
