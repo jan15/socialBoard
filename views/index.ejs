@@ -7,7 +7,7 @@
       <img class="media-object" src="{{ tweeter.image }}" alt="...">
     </div>
     <div class="media-body">
-      <h4 class="media-heading">@{{tweeter.screen_name}}</h4>
+      <a href="http://twitter.com/{{tweeter.screen_name}}"><h4 class="media-heading">@{{tweeter.screen_name}}</h4></a>
       <div ng-show="tweeter.loading">
         <i class="fa fa-spin fa-spinner"></i>
       </div>
