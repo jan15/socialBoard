@@ -17,9 +17,10 @@ var client = new Twitter({
 router.get('/tweeter/:screen_name', function(req, res, next) {
   var params = { count: 200, include_rts: false, screen_name: req.params.screen_name };
   client.get('statuses/user_timeline', params, function(error, tweets, response){
-    var info = { url: '', tweets: 0, retweets: 0, favorites: 0 };
+    var info = { name: '', url: '', tweets: 0, retweets: 0, favorites: 0 };
     if (!error) {
       info.url = tweets[0].user.profile_image_url.replace(/_normal/g,'_bigger');
+      info.name = tweets[0].user.name;
       tweets.forEach(function(tweet) {
         if (((new Date()) - (new Date(tweet.created_at)))/1000/60/60 <= 24) {
           info.tweets += 1;
