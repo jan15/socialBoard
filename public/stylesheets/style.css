@@ -1,8 +1,3 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
 a {
   color: #00B7FF;
 }
@@ -18,4 +13,31 @@ a {
 
 .screen-name {
   margin-bottom: 1em;
+}
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 2.5vmin;
+}
+
+.badge {
+  font-size: 1.9vmin;
+  background: rgba(0,0,0,.15)
+}
+
+.fa-twitter {
+  color: #55acee;
+}
+
+.fa-retweet {
+  color: #5C913B;
+}
+
+.fa-star {
+  color: #FFAC33;
+}
+
+.fa-sort-amount-desc {
+  color: #bbb;
 }

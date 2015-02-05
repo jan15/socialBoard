@@ -1,18 +1,29 @@
 <% include header %>
 
 <div ng-app="socialBoard" ng-controller="MainController">
-  <div class="tweeter" ng-repeat="tweeter in tweeters">
-    <div class="screen-name">
-      {{tweeter.screen_name}}
+
+  <div><input type="text" ng-model="q" class="form-control" placeholder="Search..."/></div>
+  <div class="media tweeter" ng-repeat="tweeter in tweeters | orderBy: '-weight' | filter:q">
+    <div class="media-left">
+        <img class="media-object" src="{{ tweeter.image }}" alt="...">
     </div>
-    <div ng-show="tweeter.loading">
-      <i class="fa fa-spin fa-spinner"></i>
+    <div class="media-body">
+      <h4 class="media-heading">@{{tweeter.screen_name}}</h4>
+      <div ng-show="tweeter.loading">
+        <i class="fa fa-spin fa-spinner"></i>
+      </div>
+      <div ng-hide="tweeter.loading">
+        <span class="badge"><i class="fa fa-twitter"></i> {{tweeter.tweets}}</span>
+        <span class="badge"><i class="fa fa-retweet"></i> {{tweeter.retweets}}</span>
+        <span class="badge"><i class="fa fa-star"></i> {{tweeter.favorites}}</span>
+        <span class="badge success"><i class="fa fa-sort-amount-desc"></i> {{tweeter.weight}}</span>
+      </div>
     </div>
-    <div ng-hide="tweeter.loading">
-      <span class="badge">{{tweeter.retweets}}</span>
-      <span class="badge">{{tweeter.favorites}}</span>
-      <span class="badge">{{tweeter.sum}}</span>
-    </div>
+  </div>
+
+
+
+  <div >
   </div>
 </div>
 
