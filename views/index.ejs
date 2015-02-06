@@ -4,9 +4,11 @@
   <div class="form-group">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">@</span>
-      <input type="text" class="form-control" placeholder="Twitter Handle" ng-model="newHandle" />
+      <form ng-submit="addNewHandle()">
+        <input type="text" class="form-control" placeholder="Twitter Handle" ng-model="newHandle" />
+      </form>
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click="addNewHandle()">Add</button>
+        <button class="btn btn-default" type="submit" ng-click="addNewHandle()">Add</button>
       </span>
     </div>
     <p class="help-block error" ng-show="error">Not able to add this handle</p>
