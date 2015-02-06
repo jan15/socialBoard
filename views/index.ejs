@@ -7,36 +7,43 @@
       <form ng-submit="addNewHandle()">
         <input type="text" class="form-control" placeholder="Twitter Handle" ng-model="newHandle" />
       </form>
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="submit" ng-click="addNewHandle()">Add</button>
-      </span>
+      <span class="input-group-btn" ng-show="loading">
+       <button class="btn btn-default disabled" type="button">
+        <i class="fa fa-spin fa-spinner"></i>
+      </button>
+    </span>
+     <span class="input-group-btn" ng-show="!loading">
+       <button class="btn btn-default" type="button" ng-click="addNewHandle(); loader()" >
+        Add
+       </button>
+     </span>
     </div>
-    <p class="help-block error" ng-show="error">Not able to add this handle</p>
+    <p class="alert alert-danger" ng-show="error">Not able to add this handle</p>
   </div>
   <div class="form-group">
     <div ng-show="tweeters.length > 3"><input type="text" ng-model="q" class="form-control" placeholder="Search..."/></div>
   </div>
-  <div class="media tweeter" ng-repeat="tweeter in tweeters | orderBy: '-weight' | filter:q">
-    <div class="media-left">
-      <a href="http://twitter.com/{{tweeter.screen_name}}">
-        <img class="media-object" src="{{ tweeter.url }}" alt="{{tweeter.screen_name}}" />
-      </a>
-    </div>
-    <div class="media-body">
-      <a href="http://twitter.com/{{tweeter.screen_name}}">
-        <h4 class="media-heading">{{tweeter.name}}</h4>
-      </a>
-      <div ng-show="tweeter.loading">
-        <i class="fa fa-spin fa-spinner"></i>
-      </div>
-      <div ng-hide="tweeter.loading">
-        <span class="badge"><i class="fa fa-twitter"></i> {{tweeter.tweets}}</span>
-        <span class="badge"><i class="fa fa-retweet"></i> {{tweeter.retweets}}</span>
-        <span class="badge"><i class="fa fa-star"></i> {{tweeter.favorites}}</span>
-        <span class="badge success"><i class="fa fa-sort-amount-desc"></i> {{tweeter.weight}}</span>
-      </div>
-    </div>
-  </div>
+ <div class="media tweeter" ng-repeat="tweeter in tweeters | orderBy: '-weight' | filter:q">
+   <div class="media-left">
+     <a href="http://twitter.com/{{tweeter.screen_name}}">
+       <img class="media-object" src="{{ tweeter.url }}" alt="{{tweeter.screen_name}}" />
+     </a>
+   </div>
+   <div class="media-body">
+     <a href="http://twitter.com/{{tweeter.screen_name}}">
+       <h4 class="media-heading">{{tweeter.name}}</h4>
+     </a>
+     <div ng-show="tweeter.loading">
+       <i class="fa fa-spin fa-spinner"></i>
+     </div>
+     <div ng-hide="tweeter.loading">
+       <span class="badge"><i class="fa fa-twitter"></i> {{tweeter.tweets}}</span>
+       <span class="badge"><i class="fa fa-retweet"></i> {{tweeter.retweets}}</span>
+       <span class="badge"><i class="fa fa-star"></i> {{tweeter.favorites}}</span>
+       <span class="badge success"><i class="fa fa-sort-amount-desc"></i> {{tweeter.weight}}</span>
+     </div>
+   </div>
+ </div>
 </div>
 
 <% include footer %>
