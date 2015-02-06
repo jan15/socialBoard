@@ -4,8 +4,7 @@ app.controller("MainController", ['$http', '$scope', function($http, $scope) {
   $scope.tweeters = [];
 
   $scope.addNewHandle = function() {
-    var tweeter = { loading: true, screen_name: $scope.newHandle };
-    $scope.tweeters.push(tweeter);
+    var tweeter = { screen_name: $scope.newHandle };
     $http.get("/tweeter/" + tweeter.screen_name).success(function(data) {
       tweeter.name = data.name;
       tweeter.url = data.url;
@@ -13,7 +12,11 @@ app.controller("MainController", ['$http', '$scope', function($http, $scope) {
       tweeter.retweets = data.retweets;
       tweeter.favorites = data.favorites;
       tweeter.weight = data.favorites + (1.5 * data.retweets);
-      tweeter.loading = false;
+      $scope.error = false;
+      $scope.newHandle = '';
+      $scope.tweeters.push(tweeter);
+    }).error(function() {
+      $scope.error = true;
     });
   };
 

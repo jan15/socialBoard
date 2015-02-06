@@ -49,3 +49,9 @@ body {
 .fa-sort-amount-desc {
   color: #bbb;
 }
+
+.error {
+  color: red;
+  font-size: 0.7em;
+  text-align: center;
+}

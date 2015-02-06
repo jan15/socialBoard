@@ -1,13 +1,18 @@
 <% include header %>
 
 <div ng-app="socialBoard" ng-controller="MainController">
-  <div ng-show="tweeters.length > 3"><input type="text" ng-model="q" class="form-control" placeholder="Search..."/></div>
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1">@</span>
-    <input type="text" class="form-control" placeholder="Twitter Handle" ng-model="newHandle" />
-    <span class="input-group-btn">
-      <button class="btn btn-default" type="button" ng-click="addNewHandle()">Add</button>
-    </span>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">@</span>
+      <input type="text" class="form-control" placeholder="Twitter Handle" ng-model="newHandle" />
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="addNewHandle()">Add</button>
+      </span>
+    </div>
+    <p class="help-block error" ng-show="error">Not able to add this handle</p>
+  </div>
+  <div class="form-group">
+    <div ng-show="tweeters.length > 3"><input type="text" ng-model="q" class="form-control" placeholder="Search..."/></div>
   </div>
   <div class="media tweeter" ng-repeat="tweeter in tweeters | orderBy: '-weight' | filter:q">
     <div class="media-left">
