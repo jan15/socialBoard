@@ -6,6 +6,13 @@ app.controller("MainController", ['$http', '$scope', function($http, $scope) {
   $scope.loading = false;
 
   $scope.addNewHandle = function() {
+    $scope.loading = true;
+
+    if ($scope.tweeters.map(function(tweeter) { return tweeter.screen_name }).indexOf($scope.newHandle) >= 0) {
+      $scope.error = "Twitter handle already exists";
+      return;
+    }
+
     var tweeter = { screen_name: $scope.newHandle };
     $http.get("/tweeter/" + tweeter.screen_name).success(function(data) {
       tweeter.name = data.name;
@@ -17,15 +24,11 @@ app.controller("MainController", ['$http', '$scope', function($http, $scope) {
       $scope.error = false;
       $scope.newHandle = '';
       $scope.tweeters.push(tweeter);
-      $scope.loader();
+      $scope.loading = false;
     }).error(function() {
-      $scope.error = true;
-      $scope.loader();
+      $scope.error = "Could not add handle";
+      $scope.loading = false;
       $scope.newHandle = '';
     });
   };
-
-  $scope.loader = function() {
-    $scope.loading = !$scope.loading;
-  }
 }]);

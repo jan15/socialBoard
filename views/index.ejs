@@ -2,23 +2,21 @@
 
 <div ng-app="socialBoard" ng-controller="MainController">
   <div class="form-group">
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">@</span>
-      <form ng-submit="addNewHandle()">
-        <input type="text" class="form-control" placeholder="Twitter Handle" ng-model="newHandle" />
-      </form>
-      <span class="input-group-btn" ng-show="loading">
-       <button class="btn btn-default disabled" type="button">
-        <i class="fa fa-spin fa-spinner"></i>
-      </button>
-    </span>
-     <span class="input-group-btn" ng-show="!loading">
-       <button class="btn btn-default" type="button" ng-click="addNewHandle(); loader()" >
-        Add
-       </button>
-     </span>
-    </div>
-    <p class="alert alert-danger" ng-show="error">Not able to add this handle</p>
+    <form ng-submit="addNewHandle()">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">@</span>
+        <input type="text" class="form-control" placeholder="Twitter Handle" ng-model="newHandle" required="" />
+        <span class="input-group-btn">
+          <button class="btn btn-default disabled" type="submit" ng-show="loading">
+            <i class="fa fa-spin fa-spinner"></i>
+          </button>
+          <button class="btn btn-default" type="submit" ng-hide="loading">
+            Add
+          </button>
+        </span>
+      </div>
+    </form>
+    <p class="alert alert-danger" ng-show="error">{{error}}</p>
   </div>
   <div class="form-group">
     <div ng-show="tweeters.length > 3"><input type="text" ng-model="q" class="form-control" placeholder="Search..."/></div>
